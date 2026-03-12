@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS profiles (
+  user_id BIGINT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+  email VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  phone VARCHAR(80) NOT NULL DEFAULT '',
+  address TEXT NOT NULL DEFAULT '',
+  preferences JSONB NOT NULL DEFAULT '{}'::jsonb,
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_profiles_email ON profiles(email);

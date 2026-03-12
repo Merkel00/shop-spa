@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS promo_codes (
+  id BIGSERIAL PRIMARY KEY,
+  code VARCHAR(50) NOT NULL UNIQUE,
+  discount_percent NUMERIC(5,2) NOT NULL DEFAULT 0,
+  is_active BOOLEAN NOT NULL DEFAULT TRUE,
+  expires_at TIMESTAMP NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_promo_codes_code ON promo_codes(code);
