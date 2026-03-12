@@ -1,0 +1,91 @@
+<div class="page">
+  <div class="container">
+    <div class="split">
+      <div class="card">
+        <div class="topbar">
+          <div class="brand">
+            <h1 class="h1">Checkout</h1>
+          </div>
+          <div class="nav">
+            <a routerLink="/cart">Back to cart</a>
+          </div>
+        </div>
+
+        <div class="section">
+          <form [formGroup]="f" (ngSubmit)="submit()">
+            <div class="form-grid">
+              <div>
+                <span class="label">Name</span>
+                <input formControlName="name" placeholder="Your name" />
+                <div class="err" *ngIf="f.controls.name.touched && f.controls.name.invalid">
+                  Enter your name (min 2 chars)
+                </div>
+              </div>
+
+              <div>
+                <span class="label">Email</span>
+                <input formControlName="email" placeholder="you@example.com" />
+                <div class="err" *ngIf="f.controls.email.touched && f.controls.email.invalid">
+                  Enter a valid email
+                </div>
+              </div>
+
+              <div style="grid-column: 1 / -1;">
+                <span class="label">Address</span>
+                <input formControlName="address" placeholder="Street, city, apartment" />
+                <div class="err" *ngIf="f.controls.address.touched && f.controls.address.invalid">
+                  Enter address (min 5 chars)
+                </div>
+              </div>
+
+              <div style="grid-column: 1 / -1;">
+                <span class="label">Promo code</span>
+                <input formControlName="promo" placeholder="SALE10" />
+
+                <div class="help" *ngIf="f.controls.promo.pending">Checking promo…</div>
+
+                <div class="ok" *ngIf="!f.controls.promo.pending && promoDiscount !== null">
+                  Promo applied: {{ promoDiscount }}%
+                </div>
+
+                <div class="err" *ngIf="f.controls.promo.touched && !f.controls.promo.pending && promoInvalid()">
+                  Promo code is not valid
+                </div>
+              </div>
+            </div>
+
+            <button class="btn primary" type="submit" style="margin-top:14px; width:100%;">
+              Place order
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="topbar">
+          <div class="brand">
+            <h1 class="h1">Summary</h1>
+          </div>
+        </div>
+
+        <div class="kpi">
+          <div class="row">
+            <span>Subtotal</span>
+            <b>${{ subtotal$ | async }}</b>
+          </div>
+
+          <div class="row" *ngIf="(discount$ | async) as d" [style.display]="d ? 'flex' : 'none'">
+            <span>Discount</span>
+            <b>{{ d }}%</b>
+          </div>
+
+          <div class="total">
+            Total: ${{ finalTotal$ | async }}
+          </div>
+
+          <div class="help">Your order will be saved to the database.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="page">
+  <div class="container" style="max-width:520px;">
+    <div class="card">
+      <div class="topbar">
+        <div class="brand">
+          <h1 class="h1">Sign in</h1>
+        </div>
+        <div class="nav">
+          <a routerLink="/">Catalog</a>
+          <a routerLink="/register">Create account</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="sub">Welcome back. Enter your credentials.</p>
+
+        <form [formGroup]="f" (ngSubmit)="submit()">
+          <div style="display:grid; gap:12px;">
+            <div>
+              <span class="label">Email</span>
+              <input formControlName="email" placeholder="you@example.com" />
+            </div>
+
+            <div>
+              <span class="label">Password</span>
+              <input formControlName="password" type="password" placeholder="••••••••" />
+            </div>
+          </div>
+
+          <p class="err" *ngIf="err" style="margin-top:12px;">{{ err }}</p>
+
+          <button class="btn primary" type="submit" style="margin-top:14px; width:100%;">
+            Sign in
+          </button>
+
+          <p class="help" style="margin-top:12px;">
+            Admin test: <b>admin@shop.com</b> / <b>admin123</b>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

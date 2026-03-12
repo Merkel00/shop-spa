@@ -1,0 +1,105 @@
+.admin-order-details {
+  display: grid;
+  gap: 1rem;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: .5rem;
+  text-decoration: none;
+}
+
+.status-panel {
+  display: grid;
+  gap: .5rem;
+  min-width: 220px;
+}
+
+.status-panel select,
+.status-panel button {
+  padding: .65rem .8rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: .75rem;
+}
+
+.muted {
+  opacity: .7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: .75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  border: 1px solid transparent;
+  margin-left: 8px;
+}
+
+.status-new {
+  background: #f3f4f6;
+  color: #374151;
+  border-color: #e5e7eb;
+}
+
+.status-paid {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+.status-shipped {
+  background: #fff7ed;
+  color: #c2410c;
+  border-color: #fdba74;
+}
+
+.status-delivered {
+  background: #ecfdf5;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+.status-cancelled {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}

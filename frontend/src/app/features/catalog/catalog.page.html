@@ -1,0 +1,95 @@
+<div class="wrap" *ngIf="vm$ | async as vm">
+  <div class="head">
+    <h1 class="title-page">Catalog</h1>
+
+    <div class="controls">
+      <input [(ngModel)]="s" (ngModelChange)="apply()" placeholder="Search..." />
+
+      <select [(ngModel)]="c" (ngModelChange)="apply()">
+        <option value="">All categories</option>
+        <option *ngFor="let cat of vm.categories" [value]="cat">{{ cat }}</option>
+      </select>
+
+      <select [(ngModel)]="sort" (ngModelChange)="apply()">
+        <option value="">Sort</option>
+        <option value="price_asc">Price ↑</option>
+        <option value="price_desc">Price ↓</option>
+      </select>
+
+      <button class="ghost" type="button" (click)="store.refresh()">Refresh</button>
+    </div>
+  </div>
+
+  <p class="err" *ngIf="vm.error">{{ vm.error }}</p>
+
+  <div class="empty" *ngIf="!vm.error && vm.items.length === 0 && !vm.loading">
+    <div class="empty-card">
+      <div class="empty-title">No products found</div>
+      <div class="empty-sub">Try another search or clear filters.</div>
+      <button class="ghost" type="button" (click)="s=''; c=''; sort=''; apply()">Clear filters</button>
+    </div>
+  </div>
+
+  <div class="grid" *ngIf="vm.loading">
+    <article class="card sk" *ngFor="let _ of skeleton">
+      <div class="img sk-box"></div>
+      <div class="sk-line w70"></div>
+      <div class="sk-line w40"></div>
+      <div class="sk-line w90"></div>
+      <div class="sk-btn"></div>
+    </article>
+  </div>
+
+<div class="grid" *ngIf="!vm.loading && vm.items.length">
+  <article class="card" *ngFor="let p of vm.items; trackBy: track">
+    <a [routerLink]="['/product', p.id]" class="link">
+      <div class="img">
+        <img [src]="p.image" [alt]="p.title" loading="lazy" />
+      </div>
+
+      <div class="top-meta">
+        <span class="category-badge" [class]=" 'category-badge ' + categoryClass(p.category) ">
+          {{ categoryLabel(p.category) }}
+        </span>
+
+        <span class="rating" *ngIf="p.rating">
+          {{ stars(p.rating) }}
+        </span>
+      </div>
+
+      <h3 class="card-title">{{ p.title }}</h3>
+    </a>
+
+    <div class="meta">
+      <div class="price">${{ p.price }}</div>
+
+      <div class="badge" [class.ok]="p.stock > 0" [class.out]="p.stock === 0">
+        {{ p.stock > 0 ? 'In stock' : 'Out of stock' }}
+      </div>
+    </div>
+
+    <p class="desc">{{ p.description }}</p>
+
+    <div class="actions">
+      <button class="btn" type="button" (click)="add(p)" [disabled]="p.stock === 0">
+        {{ p.stock === 0 ? 'Out of stock' : 'Add to cart' }}
+      </button>
+    </div>
+  </article>
+</div>
+
+  <div class="pager" *ngIf="!vm.loading && !vm.error && vm.totalPages > 1">
+    <button class="ghost" type="button" (click)="prev(vm)" [disabled]="!vm.canPrev">
+      Prev
+    </button>
+
+    <div class="pager-info">
+      Page {{ vm.page + 1 }} of {{ vm.totalPages }}
+      <span class="pager-total">• {{ vm.total }} items</span>
+    </div>
+
+    <button class="ghost" type="button" (click)="next(vm)" [disabled]="!vm.canNext">
+      Next
+    </button>
+  </div>
+</div>

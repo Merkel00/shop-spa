@@ -1,0 +1,280 @@
+.wrap {
+max-width: 1100px;
+margin: 0 auto;
+padding: 18px;
+}
+
+.back {
+display: inline-block;
+margin-bottom: 14px;
+text-decoration: none;
+color: var(--primary);
+font-weight: 600;
+}
+
+.err {
+padding: 12px;
+border-radius: 14px;
+border: 1px solid color-mix(in srgb, #ef4444 35%, var(--border));
+background: color-mix(in srgb, #ef4444 12%, var(--card));
+color: #ef4444;
+}
+
+.card {
+display: grid;
+grid-template-columns: 1.1fr 1fr;
+gap: 16px;
+border: 1px solid var(--border);
+background: var(--card);
+box-shadow: var(--shadow);
+border-radius: 18px;
+padding: 14px;
+}
+
+@media (max-width: 900px) {
+.card {
+grid-template-columns: 1fr;
+}
+}
+
+.media {
+border-radius: 16px;
+overflow: hidden;
+background: #fafafa;
+border: 1px solid var(--border);
+height: 420px;
+}
+
+.media img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+display: block;
+padding: 14px;
+}
+
+.info {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.top {
+display: flex;
+justify-content: space-between;
+gap: 12px;
+align-items: flex-start;
+}
+
+.title {
+margin: 0;
+font-size: 28px;
+line-height: 1.15;
+}
+
+.price {
+font-size: 22px;
+font-weight: 900;
+}
+
+.meta {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+}
+
+.badge {
+font-size: 12px;
+padding: 6px 10px;
+border-radius: 999px;
+border: 1px solid var(--border);
+color: var(--muted);
+background: color-mix(in srgb, var(--card) 70%, transparent);
+}
+
+.badge.ok {
+color: #16a34a;
+border-color: color-mix(in srgb, #16a34a 35%, var(--border));
+}
+
+.badge.out {
+color: #ef4444;
+border-color: color-mix(in srgb, #ef4444 35%, var(--border));
+}
+
+.desc {
+color: var(--muted);
+line-height: 1.45;
+}
+
+.buy {
+display: grid;
+grid-template-columns: 1fr auto;
+gap: 10px;
+align-items: center;
+}
+
+@media (max-width: 520px) {
+.buy {
+grid-template-columns: 1fr;
+}
+}
+
+.btn {
+padding: 12px 14px;
+border-radius: 14px;
+background: var(--primary);
+color: white;
+border: none;
+cursor: pointer;
+font-weight: 700;
+}
+
+.btn:disabled {
+background: color-mix(in srgb, var(--muted) 35%, var(--card));
+color: var(--muted);
+cursor: not-allowed;
+}
+
+.ghost {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 0 14px;
+height: 44px;
+border-radius: 14px;
+border: 1px solid var(--border);
+background: var(--card);
+text-decoration: none;
+color: var(--text);
+font-weight: 700;
+}
+
+.details {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+}
+
+@media (max-width: 900px) {
+.details {
+grid-template-columns: 1fr;
+}
+}
+
+.detail {
+border: 1px solid var(--border);
+border-radius: 14px;
+padding: 10px;
+background: color-mix(in srgb, var(--card) 85%, var(--soft));
+}
+
+.k {
+font-size: 12px;
+color: var(--muted);
+}
+
+.v {
+font-weight: 800;
+margin-top: 4px;
+}
+
+.related {
+margin-top: 18px;
+}
+
+.h2 {
+margin: 0 0 10px;
+font-size: 16px;
+font-weight: 900;
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 12px;
+}
+
+@media (max-width: 1000px) {
+.grid {
+grid-template-columns: repeat(3, 1fr);
+}
+}
+
+@media (max-width: 760px) {
+.grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 520px) {
+.grid {
+grid-template-columns: 1fr;
+}
+}
+
+.r-card {
+text-decoration: none;
+color: inherit;
+border: 1px solid var(--border);
+background: var(--card);
+border-radius: 16px;
+padding: 12px;
+box-shadow: var(--shadow);
+transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.r-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.r-img {
+aspect-ratio: 4 / 3;
+border-radius: 14px;
+border: 1px solid var(--border);
+background: #fafafa;
+display: grid;
+place-items: center;
+overflow: hidden;
+}
+
+.r-img img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+padding: 10px;
+}
+
+.r-title {
+margin-top: 10px;
+font-weight: 800;
+font-size: 14px;
+}
+
+.r-row {
+margin-top: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.r-price {
+font-weight: 900;
+}
+
+.r-badge {
+font-size: 11px;
+padding: 4px 10px;
+border-radius: 999px;
+border: 1px solid var(--border);
+color: var(--muted);
+}
+
+.r-badge.ok {
+color: #16a34a;
+}
+
+.r-badge.out {
+color: #ef4444;
+}

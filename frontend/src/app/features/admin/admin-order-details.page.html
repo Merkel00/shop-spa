@@ -1,0 +1,86 @@
+<section class="admin-order-details" *ngIf="loading">
+  <p>Loading order...</p>
+</section>
+
+<section class="admin-order-details" *ngIf="!loading && errorMessage">
+  <a routerLink="/admin/orders" class="back-link">← Back to orders</a>
+  <p class="muted">{{ errorMessage }}</p>
+</section>
+
+<section class="admin-order-details" *ngIf="!loading && !errorMessage && order as o">
+  <div class="page-head">
+    <div>
+      <a routerLink="/admin/orders" class="back-link">← Back to orders</a>
+      <h1>Order #{{ o.id }}</h1>
+      <p class="muted">Created: {{ o.createdAt | date:'medium' }}</p>
+    </div>
+
+    <div class="status-panel">
+      <label for="status">Status</label>
+      <select
+        id="status"
+        [(ngModel)]="selectedStatus"
+        [disabled]="saving"
+      >
+        <option *ngFor="let s of statuses" [ngValue]="s">{{ s }}</option>
+      </select>
+
+      <button
+        type="button"
+        (click)="saveStatus()"
+        [disabled]="saving || selectedStatus === o.status"
+      >
+        {{ saving ? 'Saving...' : 'Update status' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Customer</h2>
+      <p><strong>Address:</strong> {{ o.customer.address || '—' }}</p>
+      <p><strong>Name:</strong> {{ o.customer.name || '—' }}</p>
+      <p><strong>Email:</strong> {{ o.customer.email || '—' }}</p>
+    </div>
+
+    <div class="card">
+      <h2>Summary</h2>
+      <p>
+  <strong>Status:</strong>
+  <span class="status-badge" [class]="'status-badge status-' + ((o.status || 'NEW').toLowerCase())">
+    {{ o.status || 'NEW' }}
+  </span>
+</p>
+      <p><strong>Subtotal:</strong> {{ o.subtotal | number:'1.2-2' }}</p>
+      <p><strong>Discount:</strong> {{ o.discountPercent | number:'1.0-2' }}%</p>
+      <p><strong>Total:</strong> {{ o.total | number:'1.2-2' }}</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Items</h2>
+
+    <table *ngIf="o.items.length; else emptyItems">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Line total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of o.items; trackBy: trackByTitle">
+          <td>{{ item.title }}</td>
+          <td>{{ item.price | number:'1.2-2' }}</td>
+          <td>{{ item.qty }}</td>
+          <td>{{ lineTotal(item.price, item.qty) | number:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #emptyItems>
+      <p class="muted">No items found.</p>
+    </ng-template>
+  </div>
+</section>

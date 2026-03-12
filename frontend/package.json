@@ -1,0 +1,49 @@
+{
+  "name": "shop-spa",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "api": "json-server --watch ./db.json --port 3000",
+    "dev": "concurrently \"npm run api\" \"npm run start\"",
+    "build": "ng build",
+    "test": "ng test",
+    "test:cov": "ng test --coverage"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "packageManager": "npm@11.6.2",
+  "dependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/compiler": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/forms": "^21.0.0",
+    "@angular/platform-browser": "^21.0.0",
+    "@angular/router": "^21.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.0.5",
+    "@angular/cli": "^21.0.5",
+    "@angular/compiler-cli": "^21.0.0",
+    "@vitest/coverage-v8": "^4.0.18",
+    "concurrently": "^9.2.1",
+    "cypress": "^15.10.0",
+    "jsdom": "^27.1.0",
+    "json-server": "^1.0.0-beta.5",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
+  }
+}

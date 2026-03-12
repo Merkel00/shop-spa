@@ -1,0 +1,25 @@
+<div class="wrap">
+  <h1>Cart</h1>
+
+  <p *ngIf="(items$ | async)?.length === 0">
+    Cart is empty
+  </p>
+
+  <div *ngFor="let i of items$ | async">
+    <strong>{{ i.product.title }}</strong>
+    × {{ i.qty }}
+    = ${{ i.product.price * i.qty }}
+
+    <button type="button" (click)="cart.dec(i.id)">-</button>
+    <button type="button" (click)="cart.inc(i.id)">+</button>
+    <button type="button" (click)="cart.remove(i.id)">Remove</button>
+  </div>
+
+  <hr />
+
+  <h3>Total: ${{ total$ | async }}</h3>
+
+  <a *ngIf="(items$ | async)?.length" class="checkout" routerLink="/cart/checkout">
+    Checkout
+  </a>
+</div>

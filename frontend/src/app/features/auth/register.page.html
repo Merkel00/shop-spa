@@ -1,0 +1,88 @@
+<div class="page">
+  <div class="container" style="max-width:520px;">
+    <div class="card">
+      <div class="topbar">
+        <div class="brand">
+          <h1 class="h1">Create account</h1>
+        </div>
+        <div class="nav">
+          <a routerLink="/">Catalog</a>
+          <a routerLink="/login">Login</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="sub">Create an account in a few seconds.</p>
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div style="display:grid; gap:12px;">
+
+            <div>
+              <span class="label">Email</span>
+              <input formControlName="email" placeholder="you@example.com" />
+
+              <div class="err" *ngIf="form.controls.email.touched && form.controls.email.errors?.['required']">
+                Email is required
+              </div>
+              <div class="err" *ngIf="form.controls.email.touched && form.controls.email.errors?.['email']">
+                Invalid email format
+              </div>
+              <div class="err" *ngIf="form.controls.email.touched && form.controls.email.errors?.['emailTaken']">
+                Email already taken
+              </div>
+            </div>
+
+            <div>
+              <span class="label">Password</span>
+              <input type="password" formControlName="password" placeholder="Min 6 chars" />
+
+              <div class="err" *ngIf="form.controls.password.touched && form.controls.password.errors?.['required']">
+                Password is required
+              </div>
+              <div class="err" *ngIf="form.controls.password.touched && form.controls.password.errors?.['minlength']">
+                Password must be at least 6 characters
+              </div>
+            </div>
+
+            <div>
+              <span class="label">Confirm password</span>
+              <input type="password" formControlName="confirmPassword" placeholder="Repeat password" />
+
+              <div class="err" *ngIf="form.controls.confirmPassword.touched && form.controls.confirmPassword.errors?.['required']">
+                Please confirm your password
+              </div>
+
+              <div class="err" *ngIf="form.controls.confirmPassword.touched && form.errors?.['passwordsMismatch']">
+                Passwords do not match
+              </div>
+            </div>
+
+            <div>
+              <span class="label">Name</span>
+              <input formControlName="name" placeholder="Your name" />
+
+              <div class="err" *ngIf="form.controls.name.touched && form.controls.name.errors?.['required']">
+                Name is required
+              </div>
+              <div class="err" *ngIf="form.controls.name.touched && form.controls.name.errors?.['minlength']">
+                Name must be at least 2 characters
+              </div>
+            </div>
+
+          </div>
+
+          <button
+            class="btn primary"
+            type="submit"
+            [disabled]="saving || form.pending || form.invalid"
+            style="margin-top:14px; width:100%;"
+          >
+            {{ saving ? 'Creating…' : 'Create account' }}
+          </button>
+
+          <p class="err" *ngIf="err" style="margin-top:12px;">{{ err }}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

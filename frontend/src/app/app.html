@@ -1,0 +1,32 @@
+<app-toast-host></app-toast-host>
+<app-loading-overlay></app-loading-overlay>
+<header class="topbar">
+  <a class="brand" routerLink="/">Shopinho</a>
+
+  <nav class="nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Catalog</a>
+    <a routerLink="/cart" routerLinkActive="active">
+      Cart <span class="badge" *ngIf="(cartCount$ | async) as c" [class.hidden]="c === 0">{{ c }}</span>
+    </a>
+
+    <a *ngIf="(isLoggedIn$ | async)" routerLink="/orders" routerLinkActive="active">Orders</a>
+    <a *ngIf="(isLoggedIn$ | async)" routerLink="/profile" routerLinkActive="active">Profile</a>
+
+    <a *ngIf="(isAdmin$ | async)" routerLink="/admin" routerLinkActive="active">Admin</a>
+
+    <span class="spacer"></span>
+
+    <ng-container *ngIf="!(isLoggedIn$ | async); else logged">
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/register" routerLinkActive="active">Register</a>
+    </ng-container>
+
+    <ng-template #logged>
+      <button class="linklike" type="button" (click)="logout()">Logout</button>
+    </ng-template>
+  </nav>
+</header>
+
+<main class="page">
+  <router-outlet></router-outlet>
+</main>

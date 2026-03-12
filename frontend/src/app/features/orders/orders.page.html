@@ -1,0 +1,48 @@
+<div class="wrap" *ngIf="vm$ | async as vm">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+    <h1 style="margin:0;">My Orders</h1>
+
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a routerLink="/" style="text-decoration:underline;">Catalog</a>
+      <a routerLink="/profile" style="text-decoration:underline;">Profile</a>
+      <button type="button" (click)="reload()">Refresh</button>
+    </div>
+  </header>
+
+  <p *ngIf="vm.error" style="color:#b00020;margin-top:12px;">
+    {{ vm.error }}
+  </p>
+
+  <p *ngIf="!vm.error && vm.items.length === 0" style="margin-top:16px;">
+    No orders yet.
+  </p>
+
+  <table *ngIf="vm.items.length" style="width:100%;border-collapse:collapse;margin-top:16px;">
+    <thead>
+      <tr style="text-align:left;border-bottom:1px solid #ddd;">
+        <th style="padding:10px;">ID</th>
+        <th style="padding:10px;">Date</th>
+        <th style="padding:10px;">Items</th>
+        <th style="padding:10px;">Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <ng-container *ngFor="let o of vm.items; trackBy: track">
+        <tr style="border-bottom:1px solid #eee;vertical-align:top;">
+          <td style="padding:10px;">{{ o.id }}</td>
+          <td style="padding:10px;">{{ formatDate(o.createdAt) }}</td>
+          <td style="padding:10px;">
+            {{ o.items.length }}
+            <div *ngIf="o.items.length" style="margin-top:8px;font-size:13px;opacity:.85;">
+              <div *ngFor="let it of o.items">
+                • {{ it.title }} × {{ it.qty }} ({{ it.price }})
+              </div>
+            </div>
+          </td>
+          <td style="padding:10px;">${{ o.total }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

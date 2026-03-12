@@ -1,0 +1,64 @@
+<div class="wrap">
+  <div class="top">
+    <h1>Orders</h1>
+
+    <div class="actions">
+      <a routerLink="/">Catalog</a>
+      <button (click)="logout()">Logout</button>
+      <button (click)="reload()">Refresh</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <input
+      type="text"
+      placeholder="Search by id, email, address, item..."
+      [ngModel]="searchTerm"
+      (ngModelChange)="onSearch($event)"
+    />
+
+    <select
+      [ngModel]="selectedStatus"
+      (ngModelChange)="onStatusChange($event)"
+    >
+      <option value="">All statuses</option>
+      <option *ngFor="let s of statuses" [ngValue]="s">{{ s }}</option>
+    </select>
+  </div>
+
+  <ng-container *ngIf="orders$ | async as o">
+    <p *ngIf="o.length === 0">No orders found</p>
+
+    <table *ngIf="o.length" class="t">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Items</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let x of o; trackBy: trackByOrderId">
+          <td>{{ x.id }}</td>
+          <td>{{ x.createdAt ? (x.createdAt | date:'short') : '—' }}</td>
+          <td>{{ x.customer.email || '—' }}</td>
+          <td>
+            <span class="status-badge" [class]="'status-badge status-' + ((x.status || 'NEW').toLowerCase())">
+              {{ x.status || 'NEW' }}
+            </span>
+          </td>
+          <td>{{ x.items.length }}</td>
+          <td>{{ x.total | number:'1.2-2' }}</td>
+          <td>
+            <a [routerLink]="['/admin/orders', x.id]">Open</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>

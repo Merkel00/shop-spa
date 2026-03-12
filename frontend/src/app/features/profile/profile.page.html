@@ -1,0 +1,77 @@
+<div class="page">
+  <div class="container">
+    <div class="card">
+      <div class="topbar">
+        <div class="brand">
+          <h1 class="h1">Profile</h1>
+        </div>
+
+        <div class="nav">
+          <a routerLink="/">Catalog</a>
+          <a routerLink="/orders">Orders</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="sub">Manage your personal info and preferences.</p>
+
+        <p *ngIf="loading" class="help">Loading…</p>
+        <p class="err" *ngIf="err">{{ err }}</p>
+        <p class="ok" *ngIf="ok">{{ ok }}</p>
+
+        <form [formGroup]="form" (ngSubmit)="save()">
+          <div class="form-grid">
+            <div>
+              <span class="label">Email</span>
+              <input formControlName="email" />
+              <div class="help">Email can’t be changed.</div>
+            </div>
+
+            <div>
+              <span class="label">Name</span>
+              <input formControlName="name" placeholder="Your name" />
+            </div>
+
+            <div>
+              <span class="label">Phone</span>
+              <input formControlName="phone" placeholder="+7 ..." />
+            </div>
+
+            <div>
+              <span class="label">Address</span>
+              <input formControlName="address" placeholder="Street, city" />
+            </div>
+
+            <div>
+              <span class="label">Theme</span>
+              <select formControlName="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+
+            <div>
+              <span class="label">Favorite category</span>
+              <input formControlName="favoriteCategory" placeholder="laptops / accessories / sneakers" />
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <label class="badge" style="cursor:pointer;">
+              <input type="checkbox" formControlName="newsletter" style="width:auto;margin:0 8px 0 0;" />
+              Subscribe to newsletter
+            </label>
+          </div>
+
+          <div style="margin-top:16px; display:flex; gap:10px; align-items:center;">
+            <button class="btn primary" type="submit" [disabled]="saving">
+              {{ saving ? 'Saving…' : 'Save changes' }}
+            </button>
+
+            <span class="help" *ngIf="saving">Please wait…</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

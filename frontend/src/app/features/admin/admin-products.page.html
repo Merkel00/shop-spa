@@ -1,0 +1,119 @@
+<div class="page">
+  <div class="top">
+    <div>
+      <h1>Admin · Products</h1>
+      <p class="muted">Create and manage products.</p>
+    </div>
+
+    <div class="actions">
+      <a routerLink="/admin">Dashboard</a>
+      <a routerLink="/admin/orders">Orders</a>
+      <a routerLink="/">Catalog</a>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <section class="card">
+      <h3>{{ editingId ? 'Edit product' : 'Add product' }}</h3>
+      <p class="muted" *ngIf="editingId">Editing ID: {{ editingId }}</p>
+
+      <div class="alert ok" *ngIf="ok">{{ ok }}</div>
+      <div class="alert err" *ngIf="err">{{ err }}</div>
+
+      <form class="form" [formGroup]="form" (ngSubmit)="editingId ? save() : add()">
+        <label>
+          <span>Title</span>
+          <input formControlName="title" placeholder="e.g. Laptop Pro 15" />
+          <small class="field-err" *ngIf="form.controls.title.touched && form.controls.title.invalid">
+            Title is required (min 2 chars)
+          </small>
+        </label>
+
+        <div class="row">
+          <label>
+            <span>Price</span>
+            <input type="number" formControlName="price" />
+          </label>
+
+          <label>
+            <span>Stock</span>
+            <input type="number" formControlName="stock" />
+          </label>
+        </div>
+
+        <label>
+          <span>Category</span>
+          <input formControlName="category" placeholder="e.g. sneakers" />
+        </label>
+
+        <label>
+          <span>Image URL</span>
+          <input formControlName="image" placeholder="https://..." />
+        </label>
+
+        <label>
+          <span>Description</span>
+          <textarea rows="4" formControlName="description" placeholder="Short description..."></textarea>
+        </label>
+
+        <div class="row">
+          <button class="btn" type="submit" [disabled]="saving || form.invalid">
+            {{ saving ? (editingId ? 'Saving...' : 'Adding...') : (editingId ? 'Save changes' : 'Add product') }}
+          </button>
+
+          <button
+            class="btn ghost"
+            type="button"
+            *ngIf="editingId"
+            (click)="cancelEdit()"
+            [disabled]="saving"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </section>
+
+
+    <section class="card">
+      <div class="list-top">
+        <h3>Products</h3>
+        <button class="btn ghost" (click)="reload()">Refresh</button>
+      </div>
+
+      <table class="t" *ngIf="products$ | async as p; else loading">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th class="right">Price</th>
+            <th class="right">Stock</th>
+            <th class="right"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            *ngFor="let x of p; trackBy: trackById"
+            [class.active-row]="editingId === x.id"
+          >
+            <td class="title">
+              {{ x.title }}
+              <span class="badge" *ngIf="editingId === x.id">editing</span>
+            </td>
+            <td class="right">${{ x.price }}</td>
+            <td class="right">{{ x.stock }}</td>
+            <td class="right actions-cell">
+              <button class="btn ghost" (click)="edit(x)" [disabled]="saving">Edit</button>
+              <button class="btn danger" (click)="remove(x.id)" [disabled]="saving">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #loading>
+        <p class="muted">Loading...</p>
+      </ng-template>
+    </section>
+  </div>
+</div>

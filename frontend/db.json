@@ -1,0 +1,701 @@
+{
+"products": [
+  {
+    "id": "1",
+    "title": "MacBook Pro 16",
+    "price": 2499,
+    "category": "laptops",
+    "description": "Powerful laptop for developers and creators.",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    "stock": 6
+  },
+  {
+    "id": "2",
+    "title": "MacBook Air M2",
+    "price": 1399,
+    "category": "laptops",
+    "description": "Ultra thin laptop with incredible battery life.",
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "stock": 10
+  },
+  {
+    "id": "3",
+    "title": "Dell XPS 15",
+    "price": 1899,
+    "category": "laptops",
+    "description": "Premium Windows laptop with stunning display.",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "stock": 7
+  },
+
+  {
+    "id": "4",
+    "title": "iPhone 15",
+    "price": 999,
+    "category": "electronics",
+    "description": "Latest Apple smartphone with amazing camera.",
+    "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab",
+    "stock": 12
+  },
+  {
+    "id": "5",
+    "title": "Samsung Galaxy S23",
+    "price": 899,
+    "category": "electronics",
+    "description": "Android flagship smartphone with powerful hardware.",
+    "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
+    "stock": 11
+  },
+  {
+    "id": "6",
+    "title": "iPad Pro",
+    "price": 1099,
+    "category": "electronics",
+    "description": "Powerful tablet with beautiful display.",
+    "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0",
+    "stock": 8
+  },
+
+  {
+    "id": "7",
+    "title": "Sony WH-1000XM5",
+    "price": 399,
+    "category": "accessories",
+    "description": "Industry leading noise cancelling headphones.",
+    "image": "https://sonycenter.kz/image/cache/catalog/products/new_img/audio/wh1000xm5/naushniki-sony-wh1000xm5-01-600x600.png",
+    "stock": 20
+  },
+  {
+    "id": "8",
+    "title": "Apple AirPods Pro",
+    "price": 249,
+    "category": "accessories",
+    "description": "Wireless earbuds with active noise cancellation.",
+    "image": "https://pi.mdev.kz/d278e0d1-6c9b-11ee-a262-005056b6dbd7?type=webp&w=700&h=700",
+    "stock": 18
+  },
+  {
+    "id": "9",
+    "title": "Logitech MX Master 3S",
+    "price": 129,
+    "category": "accessories",
+    "description": "Premium productivity mouse.",
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7",
+    "stock": 25
+  },
+
+  {
+    "id": "10",
+    "title": "Nike Air Jordan 1",
+    "price": 220,
+    "category": "sneakers",
+    "description": "Legendary basketball sneakers.",
+    "image": "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb",
+    "stock": 15
+  },
+  {
+    "id": "11",
+    "title": "Nike LeBron 20",
+    "price": 190,
+    "category": "sneakers",
+    "description": "High performance basketball sneakers.",
+    "image": "https://images.unsplash.com/photo-1608231387042-66d1773070a5",
+    "stock": 12
+  },
+  {
+    "id": "12",
+    "title": "Adidas Ultraboost",
+    "price": 180,
+    "category": "sneakers",
+    "description": "Running sneakers with responsive cushioning.",
+    "image": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77",
+    "stock": 14
+  },
+
+  {
+    "id": "13",
+    "title": "PlayStation 5",
+    "price": 599,
+    "category": "electronics",
+    "description": "Next generation gaming console.",
+    "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db",
+    "stock": 5
+  },
+  {
+    "id": "14",
+    "title": "Xbox Series X",
+    "price": 599,
+    "category": "electronics",
+    "description": "Powerful gaming console with 4K performance.",
+    "image": "https://images.unsplash.com/photo-1621259182978-fbf93132d53d",
+    "stock": 7
+  },
+  {
+    "id": "15",
+    "title": "Apple Watch Series 9",
+    "price": 449,
+    "category": "accessories",
+    "description": "Smartwatch with health monitoring features.",
+    "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a",
+    "stock": 16
+  },
+  {
+    "id": "16",
+    "title": "Mechanical Keyboard",
+    "price": 159,
+    "category": "accessories",
+    "description": "RGB mechanical keyboard for gamers and developers.",
+    "image": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef",
+    "stock": 13
+  }
+],
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@shop.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "user@shop.com",
+      "password": "user123",
+      "role": "user"
+    },
+    {
+      "id": "ceef",
+      "email": "test@gmail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "c3ab",
+      "email": "marlen@gmail.com",
+      "password": "12345",
+      "role": "user"
+    },
+    {
+      "id": "993e",
+      "email": "ahaha@gmail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "bb3c",
+      "email": "firstuser@gmail.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "291d",
+      "email": "testing@gmail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "3372",
+      "email": "regsfddf@gmail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "b17c",
+      "email": "1234@gmail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "29a2",
+      "email": "gente@gmail.com",
+      "password": "gentle1234",
+      "role": "user"
+    },
+    {
+      "id": "5652",
+      "email": "testinguser@gmail.com",
+      "password": "1234",
+      "role": "user"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "user@shop.com",
+      "name": "User",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "light",
+        "newsletter": false,
+        "favoriteCategory": "laptops"
+      }
+    },
+    {
+      "id": "ceef",
+      "email": "test@gmail.com",
+      "name": "test",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "light",
+        "newsletter": false,
+        "favoriteCategory": ""
+      }
+    },
+    {
+      "id": "c3ab",
+      "email": "marlen@gmail.com",
+      "name": "Marlen",
+      "phone": "777777777",
+      "address": "Syganak",
+      "preferences": {
+        "theme": "light",
+        "newsletter": true,
+        "favoriteCategory": "laptops"
+      }
+    },
+    {
+      "id": "993e",
+      "email": "ahaha@gmail.com",
+      "name": "Haha",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "light",
+        "newsletter": false,
+        "favoriteCategory": ""
+      }
+    },
+    {
+      "id": "bb3c",
+      "email": "firstuser@gmail.com",
+      "name": "User",
+      "phone": "+77089556768",
+      "address": "Sauran 6",
+      "preferences": {
+        "theme": "light",
+        "newsletter": true,
+        "favoriteCategory": "sneakers"
+      }
+    },
+    {
+      "id": "291d",
+      "email": "testing@gmail.com",
+      "name": "Testing",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "light",
+        "newsletter": true,
+        "favoriteCategory": ""
+      }
+    },
+    {
+      "id": "3372",
+      "email": "regsfddf@gmail.com",
+      "name": "As",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "dark",
+        "newsletter": false,
+        "favoriteCategory": ""
+      }
+    },
+    {
+      "id": "b17c",
+      "email": "1234@gmail.com",
+      "name": "1234",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "light",
+        "newsletter": false,
+        "favoriteCategory": ""
+      }
+    },
+    {
+      "id": "29a2",
+      "email": "gente@gmail.com",
+      "name": "Gentle",
+      "phone": "+77787778989",
+      "address": "Astana, Kenesary",
+      "preferences": {
+        "theme": "light",
+        "newsletter": true,
+        "favoriteCategory": "laptops"
+      }
+    },
+    {
+      "id": "1",
+      "email": "admin@shop.com",
+      "name": "admin",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "light",
+        "newsletter": false,
+        "favoriteCategory": ""
+      }
+    },
+    {
+      "id": "5652",
+      "email": "testinguser@gmail.com",
+      "name": "TestUser",
+      "phone": "",
+      "address": "",
+      "preferences": {
+        "theme": "light",
+        "newsletter": false,
+        "favoriteCategory": ""
+      }
+    }
+  ],
+  "orders": [
+    {
+      "id": "7a23",
+      "createdAt": "test",
+      "customer": {
+        "name": "A",
+        "email": "a@a.com",
+        "address": "Street 1"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 0,
+      "total": 0
+    },
+    {
+      "id": "2f8b",
+      "createdAt": "test",
+      "customer": {
+        "name": "A",
+        "email": "a@a.com",
+        "address": "Street 1"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 0,
+      "total": 0
+    },
+    {
+      "id": "8027",
+      "createdAt": "2026-02-02T09:28:48.264Z",
+      "customer": {
+        "name": "MARLEN",
+        "email": "MARLEN@GMAIL.COM",
+        "address": "GENGER"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 199,
+      "discountPercent": 10,
+      "total": 179
+    },
+    {
+      "id": "7118",
+      "createdAt": "2026-02-02T10:13:25.127Z",
+      "customer": {
+        "name": "Marlen",
+        "email": "marlen@gmail.com",
+        "address": "12345"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 199,
+      "discountPercent": 10,
+      "total": 179
+    },
+    {
+      "id": "e44d",
+      "createdAt": "2026-02-02T11:12:46.137Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 199,
+      "discountPercent": 10,
+      "total": 179
+    },
+    {
+      "id": "430e",
+      "createdAt": "2026-02-02T11:12:46.137Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 199,
+      "discountPercent": 10,
+      "total": 179
+    },
+    {
+      "id": "be29",
+      "createdAt": "2026-02-02T11:12:49.256Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 10,
+      "total": 0
+    },
+    {
+      "id": "cc89",
+      "createdAt": "2026-02-02T11:12:49.256Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 10,
+      "total": 0
+    },
+    {
+      "id": "25cc",
+      "createdAt": "2026-02-02T11:12:49.923Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 10,
+      "total": 0
+    },
+    {
+      "id": "69a2",
+      "createdAt": "2026-02-02T11:12:49.923Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 10,
+      "total": 0
+    },
+    {
+      "id": "b3e8",
+      "createdAt": "2026-02-02T11:12:50.303Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 10,
+      "total": 0
+    },
+    {
+      "id": "499d",
+      "createdAt": "2026-02-02T11:12:50.303Z",
+      "customer": {
+        "name": "Test",
+        "email": "Test@gmail.com",
+        "address": "Testing"
+      },
+      "items": [],
+      "subtotal": 0,
+      "discountPercent": 10,
+      "total": 0
+    },
+    {
+      "id": "2009",
+      "createdAt": "2026-02-09T08:37:43.737Z",
+      "customer": {
+        "name": "Marlen",
+        "email": "marlen@gmail.com",
+        "address": "Sauran"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        },
+        {
+          "productId": "1",
+          "title": "Laptop Pro 15",
+          "price": 1299,
+          "qty": 1
+        }
+      ],
+      "subtotal": 1498,
+      "discountPercent": 10,
+      "total": 1348
+    },
+    {
+      "id": "0d96",
+      "createdAt": "2026-02-09T09:10:52.354Z",
+      "customer": {
+        "name": "Haha",
+        "email": "haha@gmail.com",
+        "address": "Hahaninho"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 2
+        }
+      ],
+      "subtotal": 398,
+      "discountPercent": 10,
+      "total": 358
+    },
+    {
+      "id": "4767",
+      "createdAt": "2026-02-09T09:55:07.342Z",
+      "customer": {
+        "name": "Haha",
+        "email": "ahaha@gmail.com",
+        "address": "Hahalandia"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 199,
+      "discountPercent": 10,
+      "total": 179
+    },
+    {
+      "id": "1a40",
+      "createdAt": "2026-02-11T16:41:36.023Z",
+      "customer": {
+        "name": "User",
+        "email": "firstuser@gmail.com",
+        "address": "Sauran"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "title": "Laptop Pro 15",
+          "price": 1299,
+          "qty": 1
+        },
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 1498,
+      "discountPercent": 10,
+      "total": 1348
+    },
+    {
+      "id": "27bb",
+      "createdAt": "2026-02-11T20:04:30.937Z",
+      "customer": {
+        "name": "Gentle",
+        "email": "gentle@gmail.com",
+        "address": "Astana,Kenesary,57"
+      },
+      "items": [
+        {
+          "productId": "f1e4",
+          "title": "Sneakers Jordan",
+          "price": 200,
+          "qty": 1
+        },
+        {
+          "productId": "1",
+          "title": "Laptop Pro 15",
+          "price": 1299,
+          "qty": 1
+        },
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 1698,
+      "discountPercent": 10,
+      "total": 1528
+    },
+    {
+      "id": "fcc4",
+      "createdAt": "2026-02-12T13:32:14.252Z",
+      "customer": {
+        "name": "Marlen",
+        "email": "marlen@gmail.com",
+        "address": "Astana"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "title": "Laptop Pro 15",
+          "price": 1299,
+          "qty": 2
+        },
+        {
+          "productId": "2",
+          "title": "Wireless Headphones",
+          "price": 199,
+          "qty": 1
+        }
+      ],
+      "subtotal": 2797,
+      "discountPercent": 10,
+      "total": 2517
+    }
+  ],
+  "promoCodes": [
+    {
+      "id": "1",
+      "code": "SALE10",
+      "discount": 10
+    },
+    {
+      "id": "2",
+      "code": "FREESHIP",
+      "discount": 0
+    }
+  ]
+}

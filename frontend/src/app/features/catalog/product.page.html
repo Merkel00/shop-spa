@@ -1,0 +1,101 @@
+<div class="wrap" *ngIf="vm$ | async as vm">
+  <a class="back" routerLink="/">← Back to catalog</a>
+
+
+  <div class="err" *ngIf="vm.error">{{ vm.error }}</div>
+
+
+  <div class="card" *ngIf="vm.product as p">
+    <div class="media">
+      <img [src]="p.image" [alt]="p.title" loading="lazy" />
+    </div>
+
+```
+<div class="info">
+  <div class="top">
+    <h1 class="title">{{ p.title }}</h1>
+    <div class="price">${{ p.price }}</div>
+  </div>
+
+  <div class="meta">
+    <span class="badge">{{ p.category }}</span>
+
+    <span
+      class="badge"
+      [class.ok]="p.stock > 0"
+      [class.out]="p.stock === 0"
+    >
+      {{ p.stock > 0 ? ('In stock: ' + p.stock) : 'Out of stock' }}
+    </span>
+  </div>
+
+  <p class="desc">{{ p.description }}</p>
+
+  <div class="buy">
+    <button
+      class="btn"
+      type="button"
+      (click)="add(p)"
+      [disabled]="p.stock === 0"
+    >
+      {{ p.stock === 0 ? 'Out of stock' : 'Add to cart' }}
+    </button>
+
+    <a class="ghost" routerLink="/cart">Go to cart</a>
+  </div>
+
+  <div class="details">
+    <div class="detail">
+      <div class="k">Delivery</div>
+      <div class="v">1–3 business days</div>
+    </div>
+
+    <div class="detail">
+      <div class="k">Payment</div>
+      <div class="v">Card / Cash</div>
+    </div>
+
+    <div class="detail">
+      <div class="k">Warranty</div>
+      <div class="v">12 months</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+
+  <section class="related" *ngIf="vm.related.length">
+    <h2 class="h2">Related products</h2>
+
+```
+<div class="grid">
+  <a
+    class="r-card"
+    *ngFor="let r of vm.related"
+    [routerLink]="['/product', r.id]"
+  >
+    <div class="r-img">
+      <img [src]="r.image" [alt]="r.title" loading="lazy" />
+    </div>
+
+    <div class="r-title">{{ r.title }}</div>
+
+    <div class="r-row">
+      <div class="r-price">${{ r.price }}</div>
+
+      <span
+        class="r-badge"
+        [class.ok]="r.stock > 0"
+        [class.out]="r.stock === 0"
+      >
+        {{ r.stock > 0 ? 'In stock' : 'Out' }}
+      </span>
+    </div>
+  </a>
+</div>
+```
+
+  </section>
+</div>
