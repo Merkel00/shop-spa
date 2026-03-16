@@ -255,7 +255,4 @@ http://localhost:4200
 - CI/CD pipeline
 - More unit and integration tests
 
-## Author
-
-Portfolio project demonstrating full-stack development skills with Angular and Spring Boot.
 
