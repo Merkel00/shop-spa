@@ -42,7 +42,7 @@ import { map, shareReplay } from 'rxjs';
           <div class="card">
             <div class="label">Top product</div>
             <div class="value small">
-              {{ vm.topProduct.title || '—' }}
+              {{ vm.topProduct?.title || '—' }}
             </div>
           </div>
 

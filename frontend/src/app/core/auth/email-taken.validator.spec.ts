@@ -1,14 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
 import { isObservable, of, throwError, firstValueFrom } from 'rxjs';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+
 import { AuthApi } from './auth.api';
 import { emailTakenValidator } from './email-taken.validator';
 
 describe('emailTakenValidator', () => {
-  let api: { findUserByEmail: any };
+  let api: { findUserByEmail: ReturnType<typeof vi.fn> };
 
   async function run(v: ReturnType<typeof emailTakenValidator>, c: FormControl) {
-    const out = v(c); 
+    const out = v(c);
     return isObservable(out) ? await firstValueFrom(out) : await out;
   }
 
@@ -32,7 +34,7 @@ describe('emailTakenValidator', () => {
 
   it('returns {emailTaken:true} when api returns existing users', async () => {
     api.findUserByEmail.mockReturnValue(
-      of([{ id: 1, email: 'x@x.com', password: 'p', role: 'user' }])
+      of([{ id: '1', email: 'x@x.com', role: 'USER' }])
     );
 
     const v = TestBed.runInInjectionContext(() => emailTakenValidator());
@@ -56,7 +58,9 @@ describe('emailTakenValidator', () => {
   });
 
   it('returns null when api errors (do not block form)', async () => {
-    api.findUserByEmail.mockReturnValue(throwError(() => new Error('network')));
+    api.findUserByEmail.mockReturnValue(
+      throwError(() => new Error('network'))
+    );
 
     const v = TestBed.runInInjectionContext(() => emailTakenValidator());
 

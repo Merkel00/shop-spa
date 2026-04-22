@@ -14,10 +14,16 @@ export type AuthResponse = {
 export class AuthApi {
   constructor(private http: HttpClient) {}
 
+  findUserByEmail(email: string): Observable<unknown[]> {
+    return this.http.get<unknown[]>(`${API.base}/users`, {
+      params: { email: email.trim().toLowerCase() },
+    });
+  }
+
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${API.base}/auth/login`, {
       email: email.trim().toLowerCase(),
-      password
+      password,
     });
   }
 
@@ -25,7 +31,7 @@ export class AuthApi {
     return this.http.post<AuthResponse>(`${API.base}/auth/register`, {
       email: email.trim().toLowerCase(),
       password,
-      name: name.trim()
+      name: name.trim(),
     });
   }
 }
