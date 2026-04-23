@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
+import { firstValueFrom, of, throwError } from 'rxjs';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 
 import { AuthApi, AuthResponse } from './auth.api';
@@ -136,6 +136,17 @@ describe('AuthService', () => {
       role: 'USER',
     });
     expect(svc2.token()).toBe('saved-token');
+  });
+
+  it('emits logged-in state from session presence', async () => {
+    expect(await firstValueFrom(svc.isLoggedIn$)).toBe(false);
+
+    svc.setSession({
+      token: 'session-token',
+      user: { id: '5', email: 'logged@test.com', role: 'USER' },
+    });
+
+    expect(await firstValueFrom(svc.isLoggedIn$)).toBe(true);
   });
 
   it('persists session for a new service instance after login', () => {

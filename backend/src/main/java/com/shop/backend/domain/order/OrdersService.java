@@ -20,6 +20,7 @@ import java.time.Instant;
 import java.util.List;
 import com.shop.backend.domain.user.UserEntity;
 import com.shop.backend.domain.user.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -33,6 +34,8 @@ public class OrdersService {
   private final ProductRepository products;
   private final PromoCodeRepository promoCodes;
   private final UserRepository users;
+  private final boolean chaosOrderDelayEnabled;
+  private final long chaosOrderDelayMs;
 
   public OrdersService(
       OrderRepository orders,
@@ -41,7 +44,9 @@ public class OrdersService {
       CartItemRepository cartItems,
       ProductRepository products,
       PromoCodeRepository promoCodes,
-      UserRepository users
+      UserRepository users,
+      @Value("${CHAOS_ORDER_DELAY_ENABLED:false}") boolean chaosOrderDelayEnabled,
+      @Value("${CHAOS_ORDER_DELAY_MS:2500}") long chaosOrderDelayMs
   ) {
     this.orders = orders;
     this.orderItems = orderItems;
@@ -50,6 +55,8 @@ public class OrdersService {
     this.products = products;
     this.promoCodes = promoCodes;
     this.users = users;
+    this.chaosOrderDelayEnabled = chaosOrderDelayEnabled;
+    this.chaosOrderDelayMs = chaosOrderDelayMs;
   }
 
   @Transactional
@@ -61,6 +68,8 @@ public class OrdersService {
     if (cartItemList.isEmpty()) {
       throw new ResponseStatusException(BAD_REQUEST, "Cart is empty");
     }
+
+    applyChaosOrderDelay();
 
     BigDecimal subtotal = BigDecimal.ZERO;
     Instant now = Instant.now();
@@ -210,5 +219,23 @@ return new OrderDto(
 
   private BigDecimal safeMoney(BigDecimal value) {
     return (value == null ? BigDecimal.ZERO : value).setScale(2, RoundingMode.HALF_UP);
+  }
+
+  private void applyChaosOrderDelay() {
+    if (!chaosOrderDelayEnabled) {
+      return;
+    }
+
+    long delayMs = Math.max(0, chaosOrderDelayMs);
+    if (delayMs == 0) {
+      return;
+    }
+
+    try {
+      Thread.sleep(delayMs);
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
+      throw new IllegalStateException("Order chaos delay interrupted", ex);
+    }
   }
 }
